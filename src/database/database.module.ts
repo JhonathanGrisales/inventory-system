@@ -11,15 +11,15 @@ import { Roles } from "src/users/entities/roles.entity";
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
         type: "postgres",
-        host: configService.get("POSTGRES_HOST"),
-        port: configService.get("POSTGRES_PORT"),
-        username: configService.get("POSTGRES_USER"),
-        password: configService.get("POSTGRES_PASSWORD"),
-        database: configService.get("POSTGRES_DATABASE"),
+        host: configService.get<string>('database.host'),
+        port: configService.get<number>('database.port'),
+        username: configService.get<string>('database.username'),
+        password: configService.get<string>('database.password'),
+        database: configService.get<string>('database.database'),
         entities: [Users, Roles],
         synchronize: false,
         ssl:
-          configService.get("MODE") === "DEV"
+          configService.get('database.mode') === "DEV"
             ? { rejectUnauthorized: false }
             : false,
       }),

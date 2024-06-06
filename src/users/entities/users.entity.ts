@@ -20,7 +20,7 @@ export class Users {
   role: Roles;
 
   @Column()
-  status: string;
+  status_id: string;
 
   @Column()
   created_at: string;

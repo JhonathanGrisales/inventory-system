@@ -8,6 +8,6 @@ export class UsersController {
 
   @Get()
   async getAllUser() {
-    return await this.usersService.getAllUser();
+    return 'CualquierCosa'
   }
 }

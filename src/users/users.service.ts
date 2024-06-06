@@ -7,14 +7,10 @@ import { Repository } from "typeorm";
 export class UsersService {
   constructor(
     @InjectRepository(Users)
-    private productsRepository: Repository<Users>
+    private usersRepository: Repository<Users>
   ) {}
 
-  async getAllUser() {
-    try {
-      return this.productsRepository.find();
-    } catch (error) {
-      throw new Error(error);
-    }
+  async getUserByEmail(email: string) {
+    return this.usersRepository.findOne({ where: { email } });
   }
 }
