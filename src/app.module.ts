@@ -4,7 +4,7 @@ import { DatabaseModule } from "./database/database.module";
 import { UsersModule } from "./users/users.module";
 import { ConfigModule } from "@nestjs/config";
 import { PassportModule } from "@nestjs/passport";
-import { LoggerMiddleware } from "./auth/middleware/logger.middleware";
+import { LoggerMiddleware, PasswordMiddleware } from "./auth/middleware/logger.middleware";
 import configuration from "./config/configuration";
 
 @Module({
@@ -22,5 +22,6 @@ import configuration from "./config/configuration";
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(LoggerMiddleware).forRoutes("auth/login");
+    consumer.apply(PasswordMiddleware).forRoutes("auth/login");
   }
 }

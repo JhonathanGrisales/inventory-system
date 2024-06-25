@@ -1,9 +1,10 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Roles } from "./roles.entity";
+import { Status } from "./status.entity";
 
 @Entity({ schema: "authentication", name: "users" })
 export class Users {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   uid: string;
 
   @Column()
@@ -19,8 +20,10 @@ export class Users {
   @JoinColumn({ name: 'role_id' })
   role: Roles;
 
-  @Column()
-  status_id: string;
+
+  @ManyToOne(() => Status, status => status.users)
+  @JoinColumn({ name: 'status_id' })
+  status: Status;
 
   @Column()
   created_at: string;

@@ -13,13 +13,18 @@ export class AuthService {
     private readonly usersRepository: Repository<Users>
   ) {}
   async login(loginUserDto: LoginUserDto) {
-    const user = await this.usersRepository.findOne({
-      where: { email: loginUserDto.email },
-    });
+    try {
+      const user = await this.usersRepository.findOne({
+        where: { email: loginUserDto.email },
+      });
 
-    const payload = { username: user.name, uid: user.uid };
-    return {
-      access_token: this.jwtTokenService.sign(payload),
-    };
+      const payload = { username: user.name, uid: user.uid };
+      return {
+        user_name: user.name,
+        token: this.jwtTokenService.sign(payload),
+      };
+    } catch (error) {
+      throw new Error(error);
+    }
   }
 }
