@@ -16,7 +16,7 @@ async function bootstrap() {
     })
   );
 
-  await NestFactory.create(AppModule, { cors: true });
+  app.enableCors();
   await app.listen(configureService.get<number>('PORT'));
   logger.log(`App running on port ${configureService.get<number>('PORT')}`);
 }
