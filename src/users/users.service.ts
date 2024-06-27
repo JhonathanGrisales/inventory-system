@@ -16,4 +16,10 @@ export class UsersService {
       relations: ['role', 'status'],
     });
   }
+
+  async registerNewUser(){
+
+    console.log('Crear usuario')
+
+  }
 }

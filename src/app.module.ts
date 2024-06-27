@@ -5,7 +5,9 @@ import { UsersModule } from "./users/users.module";
 import { ConfigModule } from "@nestjs/config";
 import { PassportModule } from "@nestjs/passport";
 import { LoggerMiddleware, PasswordMiddleware } from "./auth/middleware/logger.middleware";
+import { DateModule } from './date/date.module';
 import configuration from "./config/configuration";
+import { DateService } from "./date/date.service";
 
 @Module({
   imports: [
@@ -14,6 +16,7 @@ import configuration from "./config/configuration";
     UsersModule,
     ConfigModule.forRoot({ isGlobal: true, load: [configuration] }),
     PassportModule.register({ defaultStrategy: "jwt" }),
+    DateModule,
   ],
   controllers: [],
   providers: [],
