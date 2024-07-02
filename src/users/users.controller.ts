@@ -10,6 +10,6 @@ export class UsersController {
   @Post('/register')
   async getAllUser( @Body() registerUserDto: RegisterUserDto ) {
     
-    this.usersService.registerNewUser()
+    this.usersService.registerNewUser(registerUserDto)
   }
 }

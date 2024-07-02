@@ -1,5 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Users } from "./users.entity";
+import { Users } from "../../users/entities/users.entity";
 
 @Entity({ schema: "authentication", name: "roles" })
 export class Roles {

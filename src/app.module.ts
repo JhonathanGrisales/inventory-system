@@ -7,7 +7,8 @@ import { PassportModule } from "@nestjs/passport";
 import { LoggerMiddleware, PasswordMiddleware } from "./auth/middleware/logger.middleware";
 import { DateModule } from './date/date.module';
 import configuration from "./config/configuration";
-import { DateService } from "./date/date.service";
+import { RolesModule } from './roles/roles.module';
+import { validateExistRoleMiddleware } from "./common/middleware/validateRoles.middleware";
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { DateService } from "./date/date.service";
     ConfigModule.forRoot({ isGlobal: true, load: [configuration] }),
     PassportModule.register({ defaultStrategy: "jwt" }),
     DateModule,
+    RolesModule,
   ],
   controllers: [],
   providers: [],
@@ -26,5 +28,6 @@ export class AppModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(LoggerMiddleware).forRoutes("auth/login");
     consumer.apply(PasswordMiddleware).forRoutes("auth/login");
+    consumer.apply(validateExistRoleMiddleware).forRoutes("users/register");
   }
 }
