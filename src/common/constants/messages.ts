@@ -10,6 +10,16 @@ export const Messages = {
     message: "Unauthorized",
     message_es: "No autorizado",
   },
+  messageUserNotConfirmAccount:{
+    status: false,
+    message: "Unconfirmed account",
+    message_es: "Cuenta sin confirmar",
+  },
+  messageTokenInvalid: {
+    status: false,
+    message: "Token Invalid",
+    message_es: "Token invalido",
+  },
   messageRoleNotExist: {
     status: false,
     message: "The role does not exist",
@@ -19,5 +29,15 @@ export const Messages = {
     status: false,
     message: "The email already exists",
     message_es: "El correo electrónico ya existe",
+  },
+  successfulMessage: {
+    status: true,
+    message: "",
+    message_es: "",
+  },
+  errorMessage: {
+    status: false,
+    message: "",
+    message_es: "",
   },
 };

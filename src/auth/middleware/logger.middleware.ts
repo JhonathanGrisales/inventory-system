@@ -25,6 +25,15 @@ export class LoggerMiddleware implements NestMiddleware {
           .json(Messages.messageUnamortized);
       }
 
+      if (
+        user.is_confirmed === false &&
+        (user.confirmation_token !== null || user.confirmation_token !== "")
+      ) {
+        return res
+          .status(HttpStatus.BAD_REQUEST)
+          .json(Messages.messageUserNotConfirmAccount);
+      }
+      
       next();
     } catch (error) {
       Messages.InternalServerError.error = error.message;

@@ -44,4 +44,10 @@ export class Users {
 
   @Column()
   address: string;
+
+  @Column()
+  is_confirmed: boolean;
+
+  @Column()
+  confirmation_token: string;
 }

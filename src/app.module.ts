@@ -9,6 +9,8 @@ import { DateModule } from './date/date.module';
 import configuration from "./config/configuration";
 import { RolesModule } from './roles/roles.module';
 import { validateExistRoleMiddleware } from "./common/middleware/validateRoles.middleware";
+import { StandardMessagesModule } from './standard-messages/standard-messages.module';
+import { SendMailsModule } from './send-mails/send-mails.module';
 
 @Module({
   imports: [
@@ -19,6 +21,8 @@ import { validateExistRoleMiddleware } from "./common/middleware/validateRoles.m
     PassportModule.register({ defaultStrategy: "jwt" }),
     DateModule,
     RolesModule,
+    StandardMessagesModule,
+    SendMailsModule,
   ],
   controllers: [],
   providers: [],
