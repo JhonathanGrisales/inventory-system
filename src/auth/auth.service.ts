@@ -14,6 +14,7 @@ export class AuthService {
     private readonly usersRepository: Repository<Users>,
     private readonly dateService: DateService
   ) {}
+
   async login(loginUserDto: LoginUserDto) {
     try {
       const date_now = new Date();
@@ -37,4 +38,11 @@ export class AuthService {
       throw new Error(error);
     }
   }
+
+  validateToken(token: string) {
+    return this.jwtTokenService.verify(token, {
+        secret : process.env.SECRET_KEY
+    });
+}
+
 }

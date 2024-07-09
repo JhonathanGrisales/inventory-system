@@ -40,4 +40,9 @@ export const Messages = {
     message: "",
     message_es: "",
   },
+  tokenNotFound: {
+    status: false,
+    message: "token not provided",
+    message_es: "Token no proporcionado",
+  },
 };

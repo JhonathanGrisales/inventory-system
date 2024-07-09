@@ -1,7 +1,7 @@
-import { Module } from "@nestjs/common";
+import { forwardRef, Module } from "@nestjs/common";
 import { AuthService } from "./auth.service";
 import { AuthController } from "./auth.controller";
-import { JwtModule } from "@nestjs/jwt";
+import { JwtModule, JwtService } from "@nestjs/jwt";
 import { PassportModule } from "@nestjs/passport";
 import { JwtStrategy } from "./jwt.strategy";
 import { TypeOrmModule } from "@nestjs/typeorm";
@@ -26,8 +26,8 @@ import { DateService } from "src/date/date.service";
       }),
     }),
     TypeOrmModule.forFeature([Users]),
-    UsersModule,
+    forwardRef(() => UsersModule)
   ],
-  exports: [JwtModule, PassportModule],
+  exports: [JwtModule, PassportModule, AuthService],
 })
 export class AuthModule {}

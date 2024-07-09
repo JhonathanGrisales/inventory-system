@@ -1,5 +1,5 @@
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { MiddlewareConsumer, Module } from "@nestjs/common";
+import { forwardRef, MiddlewareConsumer, Module } from "@nestjs/common";
 import { UsersService } from "./users.service";
 import { UsersController } from "./users.controller";
 import { Users } from "./entities/users.entity";
@@ -8,6 +8,8 @@ import { RolesModule } from "src/roles/roles.module";
 import { Status } from "../common/entities/status.entity";
 import { StandardMessagesModule } from "src/standard-messages/standard-messages.module";
 import { SendMailsModule } from "src/send-mails/send-mails.module";
+import { AuthModule } from "src/auth/auth.module";
+import { JwtModule } from "@nestjs/jwt";
 
 @Module({
   controllers: [UsersController],
@@ -17,7 +19,8 @@ import { SendMailsModule } from "src/send-mails/send-mails.module";
     RolesModule,
     StandardMessagesModule,
     SendMailsModule,
-  ],
+    forwardRef(() => AuthModule),
+  ], 
   exports: [UsersService],
 })
 export class UsersModule {
