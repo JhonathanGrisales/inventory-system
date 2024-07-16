@@ -1,4 +1,4 @@
-export const send_mail_active_account = (fullname: string) => {
+export const send_mail_active_account = (fullname: string, token: string) => {
     return `<!DOCTYPE html>
   <html lang="es">
   <head>
@@ -43,11 +43,12 @@ export const send_mail_active_account = (fullname: string) => {
               display: inline-block;
               padding: 10px 20px;
               margin: 20px 0;
-              background-color: #28a745;
+              background-color: #14AA36;
               color: #ffffff;
               text-decoration: none;
               border-radius: 5px;
               transition: background-color 0.3s ease;
+              font-weight: bold;
           }
           .button:hover {
               background-color: #218838;
@@ -69,7 +70,7 @@ export const send_mail_active_account = (fullname: string) => {
           <div class="content">
               <h2>¡Hola, ${fullname}! 😊</h2>
               <p>Gracias por registrarte con nosotros. Para completar tu registro, por favor haz clic en el botón de abajo para activar tu cuenta.</p>
-              <a href="[Enlace de Activación]" class="button">Activar Cuenta</a>
+              <a href="${process.env.URL_FRONT}/confirm-account?token=${token}" class="button">Activar Cuenta</a>
           </div>
           <div class="footer">
               <p>Si no creaste una cuenta, por favor ignora este correo.</p>

@@ -4,14 +4,13 @@ import { RegisterUserDto } from "./dto/register.user.dto";
 import { UsersService } from "./users.service";
 import { StandardMessagesService } from "../standard-messages/standard-messages.service";
 import { AuthGuard } from "../auth/guards/auth.guard";
-import { AuthService } from '../auth/auth.service';
 
 @Controller("users")
 export class UsersController {
   constructor(
     private readonly usersService: UsersService,
     private readonly standardMessagesService: StandardMessagesService,
-    private readonly authService: AuthService
+    
   ) {}
 
 

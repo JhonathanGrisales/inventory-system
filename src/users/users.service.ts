@@ -49,7 +49,7 @@ export class UsersService {
       );
 
       const message_subject = "Confirma tu cuenta !!! 😀";
-      const template_html = send_mail_active_account(user.name);
+      const template_html = send_mail_active_account(user.name, user.confirmation_token);
 
       const send_mail = await this.sendMailsService.sendMail(
         user.email,
