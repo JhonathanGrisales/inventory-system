@@ -51,12 +51,13 @@ export class UsersService {
       const message_subject = "Confirma tu cuenta !!! 😀";
       const template_html = send_mail_active_account(user.name, user.confirmation_token);
 
-      const send_mail = await this.sendMailsService.sendMail(
+      const send_mail =  await this.sendMailsService.sendMail(
         user.email,
         message_subject,
         template_html
       );
-      if (send_mail === 202) await this.usersRepository.save(user);
+
+       if (send_mail) await this.usersRepository.save(user); 
 
       return;
     } catch (error) {

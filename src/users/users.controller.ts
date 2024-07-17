@@ -21,7 +21,7 @@ export class UsersController {
     @Res() res: Response
   ) {
     try {
-      this.usersService.registerNewUser(registerUserDto);
+      await this.usersService.registerNewUser(registerUserDto);
       return res
         .status(HttpStatus.CREATED)
         .json(this.standardMessagesService.created("user", "usuario"));
