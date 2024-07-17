@@ -8,8 +8,8 @@ export class SendMailsService {
       const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-          user: "jgrisalesg@gmail.com",
-          pass: "ayccqgvvmgfgrqtr",
+          user: process.env.EMAIL_SENDER,
+          pass: process.env.PASSWORD_SENDER,
         },
       });
 
