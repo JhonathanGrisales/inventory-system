@@ -11,6 +11,8 @@ import { RolesModule } from './roles/roles.module';
 import { validateExistRoleMiddleware } from "./common/middleware/validateRoles.middleware";
 import { StandardMessagesModule } from './standard-messages/standard-messages.module';
 import { SendMailsModule } from './send-mails/send-mails.module';
+import { ProductsModule } from './products/products.module';
+import { CategoriesModule } from './categories/categories.module';
 
 @Module({
   imports: [
@@ -23,6 +25,8 @@ import { SendMailsModule } from './send-mails/send-mails.module';
     RolesModule,
     StandardMessagesModule,
     SendMailsModule,
+    ProductsModule,
+    CategoriesModule,
   ],
   controllers: [],
   providers: [],

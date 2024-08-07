@@ -19,27 +19,28 @@ export class StandardMessagesService {
     };
   }
 
-  deleted(entity: string) {
+  deleted(entity_en: string, entity_es: string) {
     return {
       status: true,
-      message: `${entity} deleted successfully`,
-      message_es: `${entity} eliminado exitosamente`,
+      message: `${entity_en} deleted successfully`,
+      message_es: `${entity_es} eliminado exitosamente`,
     };
   }
 
-  retrieved(entity: string) {
+  retrieved(entity_en: string, entity_es: string, data: object ) {
     return {
       status: true,
-      message: `${entity} retrieved successfully`,
-      message_es: `${entity} obtenido exitosamente`,
+      message: `${entity_en} retrieved successfully`,
+      message_es: `${entity_es} obtenido exitosamente`,
+      data
     };
   }
 
-  error(action_es: string, entity_es: string, action_en: string, entity_en: string, error) {
+  error(action_es: string, entity_es: string, action_en: string, entity_en: string, error: any) {
     return {
       status: false,
       message: `Error ${action_en} ${entity_en}`,
-      message_es: `Error al ${action_es} ${entity_es}`,
+      message_es: `Error  ${action_es} ${entity_es}`,
       error: error.message
     };
   }

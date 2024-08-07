@@ -45,4 +45,14 @@ export const Messages = {
     message: "token not provided",
     message_es: "Token no proporcionado",
   },
+  nameExist: {
+    status: false,
+    message: "The name already exists.",
+    message_es: "El nombre ya existe.",
+  },
+  messageCategoryNotExist: {
+    status: false,
+    message: "Category does not exist",
+    message_es: "La categoría no existe",
+  }
 };
